@@ -2,3 +2,37 @@
     background-color: #77b900;
     z-index: 1000 !important;
 }
+
+.buffet-outer {    
+    margin-left: 50px;
+    margin-right: 50px;    
+    overflow: hidden;
+}
+
+.buffet-inner {                  
+    width: 4500px;
+}
+
+.scroller-left {
+  position: absolute;
+  text-align:center;
+  cursor:pointer;  
+  left: 5px;
+  padding:7px;
+  padding-top:11px;
+  white-space:no-wrap;
+  vertical-align:middle;
+  background-color: transparent;
+}
+
+.scroller-right {    
+  position: absolute;
+  text-align:center;
+  cursor:pointer;
+  right: 15px;  
+  padding:7px;
+  padding-top:11px;
+  white-space:no-wrap;
+  vertical-align:middle;  
+  background-color: transparent;
+}
