@@ -9,7 +9,7 @@
     z-index: 5;         
 }
 
-.node-title {
+.node-name {
     background: linear-gradient(#5a595c, #514f54); 
     color: #c8c8c8;    
     font-family: Arial;
@@ -19,6 +19,23 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;    
     z-index: 10;
+}
+
+.node-name input {
+    background: transparent;
+    color: white;
+    border-radius: 15px;    
+}
+
+
+
+.node-type {    
+    color: #c8c8c8;    
+    font-family: Arial;
+    font-size: 10pt;
+    padding: 5px;
+    text-align: center;        
+    z-index: 10;    
 }
 
 .output-terminal {

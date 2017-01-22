@@ -10,6 +10,7 @@ import { Vec } from '../vec'
   styleUrls: ['./node.component.css']
 })
 export class NodeComponent implements OnInit {
+  @Input() nodeIndex: number;
   @Input() descriptor: NodeDescriptor;
   @Output() removeWire: EventEmitter<Wire> = new EventEmitter();
   @Output() inputTerminalMouseUp: EventEmitter<Terminal> = new EventEmitter();
@@ -17,9 +18,11 @@ export class NodeComponent implements OnInit {
   @Output() inputTerminalMouseDown: EventEmitter<Terminal> = new EventEmitter();
   @Output() outputTerminalMouseDown: EventEmitter<Terminal> = new EventEmitter();
 
+  public name: string;
   public nodeSize: Vec = new Vec(200, 250);
   public terminalSize: Vec = new Vec(15, 20);
-  public titleSize: Vec = new Vec(196, 35);
+  public nameSize: Vec = new Vec(196,35);
+  public typeSize: Vec = new Vec(196, 25);
   public terminalGapY: number = 10;
   public pos: Vec = new Vec();
   public inputs: Terminal[] = [];
@@ -47,20 +50,20 @@ export class NodeComponent implements OnInit {
     if (t)
       this.nodeSize.y = t.pos.y + this.terminalGapY * 1.5 + this.terminalSize.y;
     else
-      this.nodeSize.y = this.terminalGapY * 1.5 + this.titleSize.y;
+      this.nodeSize.y = this.terminalGapY * 1.5 + this.typeSize.y;
   }
 
   addIndexedInputTerminal(indx: number) {
     var pos = new Vec();
     pos.x = -2;
-    pos.y = this.titleSize.y + this.terminalGapY + indx * (this.terminalGapY + this.terminalSize.y);
+    pos.y = this.nameSize.y + this.typeSize.y + this.terminalGapY + indx * (this.terminalGapY + this.terminalSize.y);
     this.inputs.push(new Terminal(this, TerminalType.Input, indx, pos, this.terminalSize));
   }
 
   addIndexedOutputTerminal(indx: number) {
     var pos = new Vec();
     pos.x = this.nodeSize.x - this.terminalSize.x - 2; // removing the border size
-    pos.y = this.titleSize.y + this.terminalGapY + indx * (this.terminalGapY + this.terminalSize.y);
+    pos.y = this.nameSize.y + this.typeSize.y + this.terminalGapY + indx * (this.terminalGapY + this.terminalSize.y);
     this.outputs.push(new Terminal(this, TerminalType.Output, indx, pos, this.terminalSize));
   }
 
@@ -116,6 +119,7 @@ export class NodeComponent implements OnInit {
 
   ngOnInit() {
     this.pos = this.descriptor.pos;
+    this.name = this.descriptor.type+"_"+(this.nodeIndex+1);
     this.createTerminals();
   }
 

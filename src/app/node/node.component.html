@@ -7,8 +7,9 @@
     [style.borderColor]="borderColor()"    
     (positionChange)="onPositionChange($event)"
     (click)="toggleSelection()"
-    draggable >
-    <div class="node-title" [style.width]="titleSize.x + 'px'" [style.height]="titleSize.y + 'px'">{{ descriptor.type }}</div>
+    draggable >    
+    <div class="node-name" [style.width]="nameSize.x + 'px'" [style.height]="nameSize.y + 'px'"><input type="text" spellcheck="false" (click)="$event.stopPropagation()" style="width: 100%; height:100%; border: none;" [(ngModel)]="name"/></div>
+    <div class="node-type" [style.width]="typeSize.x + 'px'" [style.height]="typeSize.y + 'px'">{{ descriptor.type }}</div>    
     <div class="input-terminal" 
     *ngFor="let t of inputs" 
     [style.top]="t.pos.y + 'px'"
@@ -28,11 +29,11 @@
     (mouseup)="onOutputTerminalMouseUp($event,t)">
     </div>
     <div class="btn-group btn-group-xs" style="position: absolute; left: 10px; top: -15px;" *ngIf="canAddOrRemoveInputTerminal()">
-        <button type="button" *ngIf="canRemoveInputTerminal()" class="btn btn-default btn-xs"(click)="removeInputTerminal($event)" >-</button>
-        <button type="button" *ngIf="canAddInputTerminal()" class="btn btn-default btn-xs" (click)="addInputTerminal($event)">+</button>
+        <button type="button" *ngIf="canRemoveInputTerminal()" class="btn btn-default btn-xs"(click)="removeInputTerminal($event)" ><span class="fa fa-times fa-xs"></span></button>
+        <button type="button" *ngIf="canAddInputTerminal()" class="btn btn-default btn-xs" (click)="addInputTerminal($event)"><span class="fa fa-plus fa-xs"></span></button>
     </div>
     <div class="btn-group btn-group-xs" style="position: absolute; top: -15px;" [style.left]="(nodeSize.x - 45) + 'px'" *ngIf="canAddOrRemoveOutputTerminal()">
-        <button type="button" *ngIf="canRemoveOutputTerminal()" class="btn btn-default btn-xs" (click)="removeOutputTerminal($event)">-</button>
-        <button type="button" *ngIf="canAddOutputTerminal()" class="btn btn-default btn-xs" (click)="addOutputTerminal($event)">+</button>
+        <button type="button" *ngIf="canRemoveOutputTerminal()" class="btn btn-default btn-xs" (click)="removeOutputTerminal($event)"><span class="fa fa-times fa-xs"></span></button>
+        <button type="button" *ngIf="canAddOutputTerminal()" class="btn btn-default btn-xs" (click)="addOutputTerminal($event)"><span class="fa fa-plus fa-xs"></span></button>
     </div>
 </div>

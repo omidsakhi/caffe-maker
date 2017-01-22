@@ -169,18 +169,18 @@ export class SceneComponent implements OnInit, AfterViewInit {
   convertNodeToProtoText(nc: NodeComponent, indx: number): string {
     var dc: NodeDescriptor = nc.descriptor;
     var text = "layer {\n";
-    text += '  name: "' + dc.type + '_' + indx + '"\n';
+    text += '  name: "' + nc.name + '"\n';
     text += '  type: "' + dc.type + '"\n';
     for (var i = 0; i < nc.inputs.length; ++i) {
       var wire: Wire = nc.inputs[i].wire;
       if (wire && wire.input && wire.input.node) {
         var nc2 = wire.input.node;
         var indx2 = nc2.outputs.indexOf(wire.input);
-        text += '  bottom: "' + nc2.descriptor.type + "_Output_" + indx2 + '"\n';
+        text += '  bottom: "' + nc2.name + "_Output_" + indx2 + '"\n';
       }
     }
     for (var i = 0; i < nc.outputs.length; ++i)
-      text += '  top: "' + dc.type + "_Output_" + i + '"\n';
+      text += '  top: "' + nc.name + "_Output_" + i + '"\n';
 
     text += "}\n\n";
     return text;
