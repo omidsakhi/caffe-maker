@@ -1,0 +1,5 @@
+<div class="row buffet">  
+  <div class="col-md-12">
+    <button class="btn btn btn-success" data-toggle="tooltip" title="{{node.description}}" style="margin: 3px" *ngFor="let node of repo.nodes" (dragstart)="onDragStart($event,node)" draggable="true">{{node.type}}</button>
+  </div>
+</div>
