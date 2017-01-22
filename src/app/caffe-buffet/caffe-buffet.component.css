@@ -10,7 +10,7 @@
 }
 
 .buffet-inner {                  
-    width: 4500px;
+    width: 5600px;
 }
 
 .scroller-left {
@@ -29,7 +29,7 @@
   position: absolute;
   text-align:center;
   cursor:pointer;
-  right: 15px;  
+  right: 5px;  
   padding:7px;
   padding-top:11px;
   white-space:no-wrap;
