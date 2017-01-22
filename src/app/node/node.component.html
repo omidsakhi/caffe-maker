@@ -32,7 +32,7 @@
         <button type="button" *ngIf="canRemoveInputTerminal()" class="btn btn-default btn-xs"(click)="removeInputTerminal($event)" ><span class="fa fa-times fa-xs"></span></button>
         <button type="button" *ngIf="canAddInputTerminal()" class="btn btn-default btn-xs" (click)="addInputTerminal($event)"><span class="fa fa-plus fa-xs"></span></button>
     </div>
-    <div class="btn-group btn-group-xs" style="position: absolute; top: -15px;" [style.left]="(nodeSize.x - 45) + 'px'" *ngIf="canAddOrRemoveOutputTerminal()">
+    <div class="btn-group btn-group-xs" style="position: absolute; top: -15px;" [style.left]="(nodeSize.x - 54) + 'px'" *ngIf="canAddOrRemoveOutputTerminal()">
         <button type="button" *ngIf="canRemoveOutputTerminal()" class="btn btn-default btn-xs" (click)="removeOutputTerminal($event)"><span class="fa fa-times fa-xs"></span></button>
         <button type="button" *ngIf="canAddOutputTerminal()" class="btn btn-default btn-xs" (click)="addOutputTerminal($event)"><span class="fa fa-plus fa-xs"></span></button>
     </div>
