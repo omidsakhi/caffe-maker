@@ -1,3 +1,4 @@
+//import * as protobuf from 'protobufjs'
 import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { NodeDescriptor } from '../node-descriptor';
 import { RepositoryService } from '../repository.service'
@@ -20,11 +21,16 @@ export class SceneComponent implements OnInit, AfterViewInit {
   public sceneDrag: Vec = null
   public wires: Wire[] = [];
   public nodeDescriptors: NodeDescriptor[] = [];
+  //public caffe: protobuf.Root;
   @ViewChildren(NodeComponent) nodes: QueryList<NodeComponent>;
 
   constructor(public repo: RepositoryService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    //protobuf.load("assets/proto/caffe.proto", (err,root)=> {
+      //this.caffe = root;
+    //})
+  }
 
   ngAfterViewInit() { }
 
@@ -206,4 +212,5 @@ export class SceneComponent implements OnInit, AfterViewInit {
     })
     this.download("network.prototxt",text);
   }
+
 }

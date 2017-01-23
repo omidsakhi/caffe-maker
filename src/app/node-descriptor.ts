@@ -1,4 +1,5 @@
 import { Vec } from './vec'
+import { LayerParameter } from './layer-parameter';
 
 export class NodeDescriptor {
     public id: number;
@@ -6,6 +7,7 @@ export class NodeDescriptor {
     constructor(
         public type: string,
         public description: string = "",
+        public parameters : LayerParameter,
         public exactNumInputs: number = -1,
         public minNumInputs: number = -1,
         public maxNumInputs: number = -1,
@@ -20,6 +22,7 @@ export class NodeDescriptor {
         var desc = new NodeDescriptor(
             this.type,
             this.description,
+            this.parameters,
             this.exactNumInputs,
             this.minNumInputs,
             this.maxNumInputs,

@@ -21,7 +21,7 @@ export class NodeComponent implements OnInit {
   public name: string;
   public nodeSize: Vec = new Vec(200, 250);
   public terminalSize: Vec = new Vec(15, 20);
-  public nameSize: Vec = new Vec(196,35);
+  public nameSize: Vec = new Vec(196, 35);
   public typeSize: Vec = new Vec(196, 25);
   public terminalGapY: number = 10;
   public pos: Vec = new Vec();
@@ -118,8 +118,9 @@ export class NodeComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.descriptor.parameters);
     this.pos = this.descriptor.pos;
-    this.name = this.descriptor.type+"_"+(this.nodeIndex+1);
+    this.name = this.descriptor.type + "_" + (this.nodeIndex + 1);
     this.createTerminals();
   }
 
