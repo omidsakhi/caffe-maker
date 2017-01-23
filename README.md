@@ -22,7 +22,7 @@ This is a work in progress. Lots of features are still missing from the applicat
 
 # TODO
 
-- Convert the buffet green bar to a scrollable row of units.
+- ~~Convert the buffet green bar to a scrollable row of units.~~
 - Adding a config service to the application.
 - Adding parameters widget to the application.
 - Parameters for the Caffe units.
