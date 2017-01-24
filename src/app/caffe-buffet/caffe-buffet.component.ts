@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { RepositoryService } from '../repository.service'
+import { NodeFactoryService } from '../node-factory.service'
 import { NodeDescriptor } from '../node-descriptor'
 
 @Component({
@@ -13,7 +13,7 @@ export class CaffeBuffetComponent implements OnInit {
   
   private timer : any = null;
   
-  constructor(public repo: RepositoryService) { 
+  constructor(public factory: NodeFactoryService) { 
 
   }
 
@@ -21,9 +21,9 @@ export class CaffeBuffetComponent implements OnInit {
 
   }
 
-  onDragStart($event,node : NodeDescriptor) {    
+  onDragStart($event,node : string) {    
     $event.dataTransfer.effectAllowed = 'move';
-    $event.dataTransfer.setData("text",JSON.stringify({"id":node.id,"src":"buffet"}));      
+    $event.dataTransfer.setData("text",JSON.stringify({"node":node,"src":"buffet"}));
   }
 
   startScrollRight() {

@@ -6,7 +6,7 @@
     [style.width]="nodeSize.x + 'px'"
     [style.borderColor]="borderColor()"    
     (positionChange)="onPositionChange($event)"
-    (click)="toggleSelection()"
+    (click)="onNodeMouseDown($event)"
     draggable >    
     <div class="node-name" [style.width]="nameSize.x + 'px'" [style.height]="nameSize.y + 'px'"><input type="text" spellcheck="false" (click)="$event.stopPropagation()" style="width: 100%; height:100%; border: none;" [(ngModel)]="name"/></div>
     <div class="node-type" [style.width]="typeSize.x + 'px'" [style.height]="typeSize.y + 'px'">{{ descriptor.type }}</div>    

@@ -17,6 +17,7 @@ export class NodeComponent implements OnInit {
   @Output() outputTerminalMouseUp: EventEmitter<Terminal> = new EventEmitter();
   @Output() inputTerminalMouseDown: EventEmitter<Terminal> = new EventEmitter();
   @Output() outputTerminalMouseDown: EventEmitter<Terminal> = new EventEmitter();
+  @Output() requestPropertyWidget: EventEmitter<NodeComponent> = new EventEmitter();
 
   public name: string;
   public nodeSize: Vec = new Vec(200, 250);
@@ -27,7 +28,7 @@ export class NodeComponent implements OnInit {
   public pos: Vec = new Vec();
   public inputs: Terminal[] = [];
   public outputs: Terminal[] = [];
-  public isSelected: boolean = false;
+  public isSelected: boolean = false;  
 
   constructor(private el: ElementRef, private renderer: Renderer) {
 
@@ -117,8 +118,7 @@ export class NodeComponent implements OnInit {
     $event.preventDefault();
   }
 
-  ngOnInit() {
-    console.log(this.descriptor.parameters);
+  ngOnInit() {    
     this.pos = this.descriptor.pos;
     this.name = this.descriptor.type + "_" + (this.nodeIndex + 1);
     this.createTerminals();
@@ -160,7 +160,8 @@ export class NodeComponent implements OnInit {
     this.outputTerminalMouseUp.emit(t);
   }
 
-  toggleSelection() {
-    this.isSelected = this.isSelected == true ? false : true;
+  onNodeMouseDown(e : MouseEvent) {    
+      this.requestPropertyWidget.emit(this);
+      this.isSelected = this.isSelected == true ? false : true;
   }
 }

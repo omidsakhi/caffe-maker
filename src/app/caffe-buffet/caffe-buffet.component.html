@@ -3,7 +3,7 @@
   <div class="scroller-right" (mousedown)="startScrollRight()" (mouseup)="stopScroll()" (dblclick)="scrollRight()"><i class="fa-arrow-right fa fa-2x"></i></div>    
   <div class="buffet-outer" #outer>        
     <div class="buffet-inner" #inner>      
-      <button class="btn btn-success btn-lg" data-toggle="tooltip" title="{{node.description}}" style="margin: 3px" *ngFor="let node of repo.nodes" (dragstart)="onDragStart($event,node)" draggable="true">{{node.type}}</button>
+      <button class="btn btn-success btn-lg" data-toggle="tooltip" title="{{node.description}}" style="margin: 3px" *ngFor="let node of factory.nodes" (dragstart)="onDragStart($event,node)" draggable="true">{{node}}</button>
     </div>
   </div>
 </div>

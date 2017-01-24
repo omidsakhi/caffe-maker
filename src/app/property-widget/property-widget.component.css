@@ -1,0 +1,20 @@
+.property-widget {
+    position: absolute;
+    top:100;
+    left: 10;
+    width: 400px;
+    height: 600px;
+    background-color : #aaa;
+    border: solid;
+    border-color: #fff;
+    border-width: 2px;
+    border-radius: 5px;
+    z-index: 50;
+}
+
+.close-button {
+    position: relative;
+    top: -10px;
+    left: 380px;
+    border-radius: 100px;
+}

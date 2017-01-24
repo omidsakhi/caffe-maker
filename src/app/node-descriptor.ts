@@ -1,9 +1,8 @@
 import { Vec } from './vec'
 import { LayerParameter } from './layer-parameter';
 
-export class NodeDescriptor {
-    public id: number;
-    public pos: Vec;
+export class NodeDescriptor {    
+    public pos: Vec = new Vec();
     constructor(
         public type: string,
         public description: string = "",
@@ -15,23 +14,6 @@ export class NodeDescriptor {
         public minNumOutputs: number = -1,
         public maxNumOutputs: number = -1,
         public equalNumInputOutput: boolean = false
-    ) {
-    }
+    ) {}
 
-    clone(initPos: Vec): NodeDescriptor {
-        var desc = new NodeDescriptor(
-            this.type,
-            this.description,
-            this.parameters,
-            this.exactNumInputs,
-            this.minNumInputs,
-            this.maxNumInputs,
-            this.exactNumOutputs,
-            this.minNumOutputs,
-            this.maxNumOutputs,
-            this.equalNumInputOutput
-        );
-        desc.pos = initPos;
-        return desc;
-    }
 }

@@ -8,9 +8,12 @@ import { NodeComponent } from './node/node.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WireComponent } from './wire/wire.component';
 import { SceneComponent } from './scene/scene.component';
-import { RepositoryService } from './repository.service';
+import { NodeFactoryService } from './node-factory.service';
 import { DraggableDirective } from './draggable.directive';
 import { CaffeBuffetComponent } from './caffe-buffet/caffe-buffet.component';
+import { PropertyWidgetComponent } from './property-widget/property-widget.component';
+import { PropertyViewComponent } from './property-view/property-view.component';
+import { PropertyGroupViewComponent } from './property-group-view/property-group-view.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CaffeBuffetComponent } from './caffe-buffet/caffe-buffet.component';
     WireComponent,
     SceneComponent,
     DraggableDirective,
-    CaffeBuffetComponent
+    CaffeBuffetComponent,
+    PropertyWidgetComponent,
+    PropertyViewComponent,
+    PropertyGroupViewComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,7 @@ import { CaffeBuffetComponent } from './caffe-buffet/caffe-buffet.component';
     HttpModule    
   ],
   providers: [
-    RepositoryService    
+    NodeFactoryService
   ],
   bootstrap: [AppComponent]
 })

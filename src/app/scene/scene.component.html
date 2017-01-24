@@ -1,7 +1,8 @@
 <div class="scene" (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp($event)" (drop)="onDrop($event)" (dragover)='onDragOver($event)'>
-    <node *ngFor="let descriptor of nodeDescriptors; let i = index" [nodeIndex]="i" [descriptor]="descriptor" (inputTerminalMouseUp)="onInputTerminalMouseUp($event)"
+    <app-property-widget *ngIf="nodeOnView" [nodeComponent]="nodeOnView"></app-property-widget>
+    <node *ngFor="let descriptor of nodeDescriptors; let i = index" [nodeIndex]="i" [descriptor]="descriptor" (requestPropertyWidget)="onRequestPropertyWidget($event)" (inputTerminalMouseUp)="onInputTerminalMouseUp($event)"
         (outputTerminalMouseUp)="onOutputTerminalMouseUp($event)" (inputTerminalMouseDown)="onInputTerminalMouseDown($event)" (outputTerminalMouseDown)="onOutputTerminalMouseDown($event)" (removeWire)="removeWire($event)">
     </node>
     <wire *ngFor="let wire of wires" [wire]="wire" (ready)="draw()"></wire>
-    <wire *ngIf="wireInCreation" [wire]="wireInCreation"></wire>
+    <wire *ngIf="wireInCreation" [wire]="wireInCreation"></wire>    
 </div>

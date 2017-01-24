@@ -1,7 +1,7 @@
 //import * as protobuf from 'protobufjs'
 import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { NodeDescriptor } from '../node-descriptor';
-import { RepositoryService } from '../repository.service'
+import { NodeFactoryService } from '../node-factory.service'
 import { Wire } from '../wire'
 import { Vec } from '../vec'
 import { Terminal } from '../Terminal'
@@ -21,10 +21,12 @@ export class SceneComponent implements OnInit, AfterViewInit {
   public sceneDrag: Vec = null
   public wires: Wire[] = [];
   public nodeDescriptors: NodeDescriptor[] = [];
+  public nodeOnView : NodeComponent = null;
+
   //public caffe: protobuf.Root;
   @ViewChildren(NodeComponent) nodes: QueryList<NodeComponent>;
 
-  constructor(public repo: RepositoryService) { }
+  constructor(public factory: NodeFactoryService) { }
 
   ngOnInit() { 
     //protobuf.load("assets/proto/caffe.proto", (err,root)=> {
@@ -163,11 +165,11 @@ export class SceneComponent implements OnInit, AfterViewInit {
     var data = e.dataTransfer.getData("text");
     if (data) {
       var dto = JSON.parse(data);
-      if (dto.src == "buffet") {
-        var nodeDescriptor = this.repo.fintDescriptorById(dto.id);
-        if (nodeDescriptor) {
-          this.nodeDescriptors.push(nodeDescriptor.clone(new Vec(e.x, e.y)));
-        }
+      if (dto.src == "buffet")
+      {
+        var descriptor : NodeDescriptor = this.factory.createNode(dto.node);
+        descriptor.pos = new Vec(e.x,e.y);
+        this.nodeDescriptors.push(descriptor);
       }
     }
   }
@@ -211,6 +213,10 @@ export class SceneComponent implements OnInit, AfterViewInit {
       text += this.convertNodeToProtoText(nc, i);
     })
     this.download("network.prototxt",text);
+  }
+  
+  onRequestPropertyWidget($event : NodeComponent) {
+    this.nodeOnView = $event;
   }
 
 }
