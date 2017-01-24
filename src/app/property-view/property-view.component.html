@@ -1,3 +1,16 @@
-<p>
-  property-view works!
-</p>
+<div class="row" style="margin-bottom: 10px">
+  <div class="col-md-5 text-right">
+      <label class="form-label" style="margin-top: 7px;">{{property.protoText}}</label>
+  </div>
+<div class="col-md-5 text-left">
+     <input *ngIf="isText()" type="text" class="form-control" [(ngModel)]="property.value" [attr.placeholder]="placeHolder()">
+     <input *ngIf="isNumber()" type="number" class="form-control" [attr.min]="hasMinimum()?minimum():null" [(ngModel)]="property.value" [attr.placeholder]="placeHolder()">
+     <label *ngIf="isBool()"><input type="checkbox" style="width: 24px; height: 24px;" [(ngModel)]="property.value"></label>
+     <select *ngIf="isOption()" class="form-control" (ngModelChange)="property.value = $event">
+        <option [value]="item" *ngFor="let item of property.options">{{item}}</option>
+    </select>    
+</div>
+<div class="col-md-2 text-left">
+  <span *ngIf="property.description!=''" style="margin-top: 12px;" class="fa fa-question-circle fa-lg" data-toggle="tooltip" [attr.title]="property.description"></span>
+</div>
+</div>

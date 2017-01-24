@@ -21,7 +21,7 @@ export class SceneComponent implements OnInit, AfterViewInit {
   public sceneDrag: Vec = null
   public wires: Wire[] = [];
   public nodeDescriptors: NodeDescriptor[] = [];
-  public nodeOnView : NodeComponent = null;
+  public propertyPanels : NodeComponent[] = [];
 
   //public caffe: protobuf.Root;
   @ViewChildren(NodeComponent) nodes: QueryList<NodeComponent>;
@@ -216,7 +216,14 @@ export class SceneComponent implements OnInit, AfterViewInit {
   }
   
   onRequestPropertyWidget($event : NodeComponent) {
-    this.nodeOnView = $event;
+    var index = this.propertyPanels.indexOf($event);
+    if (index == -1)
+      this.propertyPanels.push($event);    
   }
 
+  onCloseRequest(panel : NodeComponent) {
+    var index = this.propertyPanels.indexOf(panel);
+    if (index != -1)
+      this.propertyPanels.splice(index,1);    
+  }
 }

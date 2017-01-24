@@ -1,8 +1,10 @@
 <div class="property-widget" [style.left]="pos.x + 'px'" [style.top]="pos.y + 'px'" draggable="true">
-    <button class="btn btn-default close-button"><span class="fa fa-times"></span></button>
-    <div class="row">
-        <div class="col-md-12">
-            
-        </div>
+    <button class="btn btn-default btn-xs close-button" (click)="close()"><span class="fa fa-times"></span></button>
+    <div class="property-widget-contents">
+        <div class="row text-center layer-param-title">
+            <div class="col-md-12">{{params.displayText}}</div>
+        </div>        
+        <div class="row" *ngFor="let p of params.properties"><div class="col-md-12"><app-property-view [property]="p"></app-property-view></div></div>
+        <div class="row" *ngFor="let g of params.propertyGroups"><div class="col-md-12"><app-property-group-view [propertyGroup]="g"></app-property-group-view></div></div>        
     </div>
 </div>

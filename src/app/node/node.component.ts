@@ -161,7 +161,12 @@ export class NodeComponent implements OnInit {
   }
 
   onNodeMouseDown(e : MouseEvent) {    
-      this.requestPropertyWidget.emit(this);
-      this.isSelected = this.isSelected == true ? false : true;
+      this.requestPropertyWidget.emit(this);      
   }
+  
+  onTitleMouseDown(e : MouseEvent) {
+    this.isSelected = this.isSelected == true ? false : true;
+    e.stopPropagation();
+  }
+
 }

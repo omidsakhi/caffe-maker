@@ -28,13 +28,13 @@ export class CaffeBuffetComponent implements OnInit {
 
   startScrollRight() {
     this.timer = setInterval(()=> {
-      this.outerContent.nativeElement.scrollLeft += 1;
+      this.outerContent.nativeElement.scrollLeft += 2;
     },5);
   }
 
   startScrollLeft() {
     this.timer = setInterval(()=> {      
-      this.outerContent.nativeElement.scrollLeft -= 1;    
+      this.outerContent.nativeElement.scrollLeft -= 2;    
     },5);
   }
 

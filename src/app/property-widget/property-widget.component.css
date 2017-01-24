@@ -9,12 +9,27 @@
     border-color: #fff;
     border-width: 2px;
     border-radius: 5px;
-    z-index: 50;
+    z-index: 50;        
+}
+
+.property-widget-contents {
+    height: 100%;
+    overflow-y : auto;    
+    overflow-x : hidden;
 }
 
 .close-button {
-    position: relative;
+    position: absolute;
     top: -10px;
-    left: 380px;
+    left: 360px;
     border-radius: 100px;
+}
+
+.layer-param-title {
+    background-color: #333;
+    border-bottom: 2px solid #fff;
+    font-weight: bold;
+    font-size: 14pt;
+    color : #fff;
+    margin-bottom: 10px;
 }

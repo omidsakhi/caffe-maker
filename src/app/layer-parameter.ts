@@ -76,7 +76,7 @@ export class LayerParameter extends PropertyGroup {
         public properties: Property[] = [],
         public propertyGroups: PropertyGroup[] = []) {
         super(displayText, "layer", properties, propertyGroups);
-        propertyGroups.push(new TransformationParameter("TransformationParameter", "transform_param"));
+        propertyGroups.push(new TransformationParameter("transform_param", "transform_param"));
     }
 }
 

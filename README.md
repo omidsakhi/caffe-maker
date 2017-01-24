@@ -23,14 +23,14 @@ This is a work in progress. Lots of features are still missing from the applicat
 # TODO
 
 - ~~Convert the buffet green bar to a scrollable row of units.~~
-- Adding a config service to the application.
-- Adding parameters widget to the application.
-- Parameters for the Caffe units.
+- ~~Adding parameters widget to the application.~~
+- Writing the added parameters to proto text file.
 - About dialog box.
 - Panning for the scene.
-- Screen capture for the scene.
 - Using ProtobufJS.
 - Reading .prototxt files and render the network.
 - Adding Solver prototxt file.
 - Compiling the network in C++.
-- Verifying the correctness of the network layers and parameters. 
+- Verifying the correctness of the network layers and parameters.
+- Adding debug points
+- Live simuation

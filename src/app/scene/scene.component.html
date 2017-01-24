@@ -1,5 +1,5 @@
 <div class="scene" (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp($event)" (drop)="onDrop($event)" (dragover)='onDragOver($event)'>
-    <app-property-widget *ngIf="nodeOnView" [nodeComponent]="nodeOnView"></app-property-widget>
+    <app-property-widget *ngFor="let panel of propertyPanels" [nodeComponent]="panel" (closeRequest)="onCloseRequest(panel)"></app-property-widget>
     <node *ngFor="let descriptor of nodeDescriptors; let i = index" [nodeIndex]="i" [descriptor]="descriptor" (requestPropertyWidget)="onRequestPropertyWidget($event)" (inputTerminalMouseUp)="onInputTerminalMouseUp($event)"
         (outputTerminalMouseUp)="onOutputTerminalMouseUp($event)" (inputTerminalMouseDown)="onInputTerminalMouseDown($event)" (outputTerminalMouseDown)="onOutputTerminalMouseDown($event)" (removeWire)="removeWire($event)">
     </node>
