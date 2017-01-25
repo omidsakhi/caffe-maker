@@ -4,9 +4,9 @@ import * as lp from './layer-parameter';
 
 @Injectable()
 export class NodeFactoryService {
-  public nodes: string[] = ['AbsVal', 'Accuracy', 'ArgMax', 'BatchNorm', 'Bias', 'Concat', 'ContrastiveLoss', 'Convolution', 'Crop', 'Dropout', 'Eltwise', 'ELU', 'EuclideanLoss', 'Exp', 'Filter', 'Flatten'
-    , 'HDF5Data', 'HDF5Output', 'HingeLoss', 'Im2col', 'ImageData', 'InfogainLoss', 'InnerProduct', 'Input', 'Log', 'LRN', 'LSTMUnit', 'MemoryData', 'MultinomialLogisticLoss', 'MVN', 'Pooling'
-    , 'Power', 'PReLU', 'Reduction', 'ReLU', 'Reshape', 'Scale', 'SigmoidCrossEntropyLoss', 'Sigmoid', 'Silence', 'Slice', 'Softmax', 'SoftmaxWithLoss', 'Split', 'TanH', 'Threshold', 'Tile'];
+  public nodes: string[] = ['Convolution', 'Dropout', 'EuclideanLoss', 'HDF5Data', 'HDF5Output', 'HingeLoss', 'InnerProduct', 'MemoryData', 'Pooling', 'ReLU', 'Sigmoid', 'Silence', 'Softmax', 'SoftmaxWithLoss', 'TanH', 'AbsVal', 'Accuracy', 'ArgMax', 'BatchNorm', 'Bias', 'Concat', 'ContrastiveLoss', 'Crop', 'Eltwise', 'ELU', 'Exp', 'Filter', 'Flatten',
+    'Im2col', 'ImageData', 'InfogainLoss', 'Input', 'Log', 'LRN', 'LSTMUnit', 'MultinomialLogisticLoss', 'MVN',
+    'Power', 'PReLU', 'Reduction', 'Reshape', 'Scale', 'SigmoidCrossEntropyLoss', 'Slice', 'Split', 'Threshold', 'Tile'];
 
   constructor() { }
   createNode(name: string): NodeDescriptor {

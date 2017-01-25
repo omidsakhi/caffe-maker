@@ -9,7 +9,7 @@
     (click)="onNodeMouseDown($event)"
     draggable >    
     <div class="node-name" [style.width]="nameSize.x + 'px'" [style.height]="nameSize.y + 'px'"><input type="text" spellcheck="false" (click)="onTitleMouseDown($event)" style="width: 100%; height:100%; border: none;" [(ngModel)]="name"/></div>
-    <div class="node-type" [style.width]="typeSize.x + 'px'" [style.height]="typeSize.y + 'px'">{{ descriptor.type }}</div>    
+    <div class="node-type" [style.width]="typeSize.x + 'px'" [style.height]="typeSize.y + 'px'">{{ descriptor.type }}   <span (click)="openPropertyWidget($event)" class="fa fa-cogs fa-lg"></span></div>    
     <div class="input-terminal" 
     *ngFor="let t of inputs" 
     [style.top]="t.pos.y + 'px'"
@@ -27,7 +27,7 @@
     [style.width]="terminalSize.x + 'px'"
     (mousedown)="onOutputTerminalMouseDown($event,t)" 
     (mouseup)="onOutputTerminalMouseUp($event,t)">
-    </div>
+    </div>    
     <div class="btn-group btn-group-xs" style="position: absolute; left: 10px; top: -15px;" *ngIf="canAddOrRemoveInputTerminal()">
         <button type="button" *ngIf="canRemoveInputTerminal()" class="btn btn-default btn-xs"(click)="removeInputTerminal($event)" ><span class="fa fa-times fa-xs"></span></button>
         <button type="button" *ngIf="canAddInputTerminal()" class="btn btn-default btn-xs" (click)="addInputTerminal($event)"><span class="fa fa-plus fa-xs"></span></button>

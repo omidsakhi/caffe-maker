@@ -188,8 +188,8 @@ export class SceneComponent implements OnInit, AfterViewInit {
       }
     }
     for (var i = 0; i < nc.outputs.length; ++i)
-      text += '  top: "' + nc.name + "_Output_" + i + '"\n';
-
+      text += '  top: "' + nc.name + "_Output_" + i + '"\n';    
+    text += dc.parameters.toProtoText(0);
     text += "}\n\n";
     return text;
   }
@@ -218,7 +218,9 @@ export class SceneComponent implements OnInit, AfterViewInit {
   onRequestPropertyWidget($event : NodeComponent) {
     var index = this.propertyPanels.indexOf($event);
     if (index == -1)
+    {      
       this.propertyPanels.push($event);    
+    }
   }
 
   onCloseRequest(panel : NodeComponent) {
