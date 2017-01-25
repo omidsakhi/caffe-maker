@@ -6,7 +6,7 @@ A web GUI application for creating Caffe Deep Learning networks
 
 # Status (WIP)
 
-This is a work in progress. Lots of features are still missing from the application. The application gives you the .prototxt file. But the file is currenly incomplete. It does contain connection between layers but no parameters yet.
+This is a work in progress. Lots of features are still missing from the application. The application gives you the .prototxt file. Some parameters (specifically those with repeat) are still missing from the prototxt file.
 
 # Requirments
 
