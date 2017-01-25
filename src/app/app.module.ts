@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NodeComponent } from './node/node.component';
@@ -14,6 +15,7 @@ import { CaffeBuffetComponent } from './caffe-buffet/caffe-buffet.component';
 import { PropertyWidgetComponent } from './property-widget/property-widget.component';
 import { PropertyViewComponent } from './property-view/property-view.component';
 import { PropertyGroupViewComponent } from './property-group-view/property-group-view.component';
+import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,17 @@ import { PropertyGroupViewComponent } from './property-group-view/property-group
     CaffeBuffetComponent,
     PropertyWidgetComponent,
     PropertyViewComponent,
-    PropertyGroupViewComponent
+    PropertyGroupViewComponent,
+    AboutDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule    
+    HttpModule,
+    MaterialModule.forRoot()
+  ],
+  entryComponents: [
+    AboutDialogComponent
   ],
   providers: [
     NodeFactoryService

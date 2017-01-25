@@ -391,7 +391,7 @@ export class MemoryDataParameter extends LayerParameter {
             new Property("batch_size", PropertyType.uint32, false, null),
             new Property("channels", PropertyType.uint32, false, null),
             new Property("height", PropertyType.uint32, false, null),
-            new Property("weight", PropertyType.uint32, false, null)
+            new Property("width", PropertyType.uint32, false, null)
         ]);
     }
 }
