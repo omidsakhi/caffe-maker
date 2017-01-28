@@ -11,3 +11,6 @@ body {
     overflow: hidden;
 }
 
+.md-dialog-container {
+    padding: 0;
+}

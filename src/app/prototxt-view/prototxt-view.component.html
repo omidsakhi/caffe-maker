@@ -1,0 +1,10 @@
+<md-toolbar><span>Prototxt File</span></md-toolbar>
+<md-card>
+<md-dialog-content>
+<textarea [(ngModel)]='protoTxt' rows="20" cols="60"></textarea>
+</md-dialog-content>
+</md-card>
+<md-toolbar>
+    <button md-raised-button md-dialog-close>Close</button>
+    <button md-raised-button (click)="download()">Download</button>
+</md-toolbar>

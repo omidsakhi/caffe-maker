@@ -6,6 +6,8 @@ import { Wire } from '../wire'
 import { Vec } from '../vec'
 import { Terminal } from '../Terminal'
 import { NodeComponent } from '../node/node.component'
+import {MdDialog, MdDialogRef} from '@angular/material';
+import { PrototxtViewComponent } from '../prototxt-view/prototxt-view.component'
 
 @Component({
   selector: 'app-scene',
@@ -26,7 +28,7 @@ export class SceneComponent implements OnInit, AfterViewInit {
   //public caffe: protobuf.Root;
   @ViewChildren(NodeComponent) nodes: QueryList<NodeComponent>;
 
-  constructor(public factory: NodeFactoryService) { }
+  constructor(public factory: NodeFactoryService, public dialog: MdDialog) { }
 
   ngOnInit() { 
     //protobuf.load("assets/proto/caffe.proto", (err,root)=> {
@@ -193,28 +195,16 @@ export class SceneComponent implements OnInit, AfterViewInit {
     text += "}\n\n";
     return text;
   }
-  download(filename, text) {
-    var pom = document.createElement('a');
-    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    pom.setAttribute('download', filename);
 
-    if (document.createEvent) {
-      var event = document.createEvent('MouseEvents');
-      event.initEvent('click', true, true);
-      pom.dispatchEvent(event);
-    }
-    else {
-      pom.click();
-    }
-  }
   onDownloadPrototxt() {
     var text: string = "";
     this.nodes.forEach((nc, i) => {
       text += this.convertNodeToProtoText(nc, i);
     })
-    this.download("network.prototxt",text);
+    let dialogRef = this.dialog.open(PrototxtViewComponent);
+    dialogRef.componentInstance.protoTxt = text;
   }
-  
+    
   onRequestPropertyWidget($event : NodeComponent) {
     var index = this.propertyPanels.indexOf($event);
     if (index == -1)

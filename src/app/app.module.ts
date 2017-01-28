@@ -16,6 +16,7 @@ import { PropertyWidgetComponent } from './property-widget/property-widget.compo
 import { PropertyViewComponent } from './property-view/property-view.component';
 import { PropertyGroupViewComponent } from './property-group-view/property-group-view.component';
 import { AboutDialogComponent } from './about-dialog/about-dialog.component';
+import { PrototxtViewComponent } from './prototxt-view/prototxt-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AboutDialogComponent } from './about-dialog/about-dialog.component';
     PropertyWidgetComponent,
     PropertyViewComponent,
     PropertyGroupViewComponent,
-    AboutDialogComponent
+    AboutDialogComponent,
+    PrototxtViewComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { AboutDialogComponent } from './about-dialog/about-dialog.component';
     MaterialModule.forRoot()
   ],
   entryComponents: [
-    AboutDialogComponent
+    AboutDialogComponent,PrototxtViewComponent
   ],
   providers: [
     NodeFactoryService

@@ -2,7 +2,7 @@ import { Directive, OnInit, OnDestroy, Renderer, ElementRef, Output, EventEmitte
 import { Vec } from './vec'
 
 @Directive({
-  selector: '[draggable]',
+  selector: '[app-draggable]',
   host: {
     '(dragstart)': 'onDragStart($event)',
     '(dragend)': 'onDragEnd($event)',
