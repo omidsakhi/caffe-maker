@@ -20,6 +20,11 @@ This is a work in progress. Lots of features are still missing from the applicat
 3. Run 'ng serve'
 4. From the browser point to 'localhost:4200'.
 
+# Issues
+
+- Dragging issues on IE11 (Works with Edge and Chrome)
+- Selecting issues on FireFox (Works with Edge and Chrome)
+
 # TODO
 
 - ~~Convert the buffet green bar to a scrollable row of units.~~
