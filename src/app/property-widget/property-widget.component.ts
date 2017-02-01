@@ -9,22 +9,26 @@ import { LayerParameter } from '../layer-parameter'
   styleUrls: ['./property-widget.component.css']
 })
 export class PropertyWidgetComponent implements OnInit {
-  
-  @Input() nodeComponent : NodeComponent;
-  @Output() closeRequest : EventEmitter<any> = new EventEmitter();
 
-  public pos : Vec ;
-  public params : LayerParameter;
+  @Input() nodeComponent: NodeComponent;
+  @Output() closeRequest: EventEmitter<any> = new EventEmitter();
+
+  public pos: Vec;
+  public params: LayerParameter;
 
   constructor() { }
 
   ngOnInit() {
-    this.pos = this.nodeComponent.pos.add(new Vec(50,50));
-    this.params = this.nodeComponent.descriptor.parameters;    
+    this.pos = this.nodeComponent.pos.add(new Vec(50, 50));
+    this.params = this.nodeComponent.descriptor.parameters;
   }
 
   close() {
     this.closeRequest.emit();
+  }
+
+  onPropertyWidgetMouseDown(e: MouseEvent) {
+    e.stopPropagation();
   }
 
 }

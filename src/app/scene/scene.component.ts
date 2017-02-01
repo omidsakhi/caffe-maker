@@ -26,9 +26,10 @@ export class SceneComponent implements OnInit, AfterViewInit {
   public propertyPanels : NodeComponent[] = [];
 
   //public caffe: protobuf.Root;
-  @ViewChildren(NodeComponent) nodes: QueryList<NodeComponent>;
 
-  constructor(public factory: NodeFactoryService, public dialog: MdDialog) { }
+  @ViewChildren(NodeComponent) nodeComponents: QueryList<NodeComponent>;  
+
+  constructor(public factory: NodeFactoryService, public dialog: MdDialog, private el:ElementRef) { }
 
   ngOnInit() { 
     //protobuf.load("assets/proto/caffe.proto", (err,root)=> {
@@ -41,7 +42,7 @@ export class SceneComponent implements OnInit, AfterViewInit {
   handleKeyboardEvents($event: KeyboardEvent) {
     if ($event.key == "x" || $event.key == "X" || $event.keyCode == 46) {
       var indices: number[] = [];
-      this.nodes.forEach((n, i) => {
+      this.nodeComponents.forEach((n, i) => {
         if (n && n.isSelected == true) {
           for (let t of n.inputs)
             if (t.wire) this.removeWire(t.wire);
@@ -127,29 +128,33 @@ export class SceneComponent implements OnInit, AfterViewInit {
       this.wires.splice(indx, 1);
   }
 
-  onMouseDown($event) {
+  onSceneMouseDown($event) {
     if (this.sceneDrag == null)
       this.sceneDrag = new Vec($event.x, $event.y);
   }
 
-  onMouseMove($event) {
+  onSceneMouseMove($event : MouseEvent) {
     if (this.wireInCreation) {
+      var scenePos = new Vec($event.pageX - this.el.nativeElement.offsetLeft,$event.pageY - this.el.nativeElement.offsetTop);      
       if (this.wireInCreation.input == null)
-        this.wireInCreation.setInputPoint(new Vec($event.x, $event.y));
+        this.wireInCreation.setInputPoint(scenePos);
       else if (this.wireInCreation.output == null)
-        this.wireInCreation.setOutputPoint(new Vec($event.x, $event.y));
+        this.wireInCreation.setOutputPoint(scenePos);
     }
     else if (this.sceneDrag) {
       var mousePos = new Vec($event.x, $event.y);
       var diff: Vec = mousePos.sub(this.sceneDrag);
-      this.nodes.forEach((n) => {
+      this.nodeComponents.forEach((n) => {
         if (n) n.pos = n.pos.add(diff);
-      })
+      });
+      this.wires.forEach((w)=> {
+        w.recalculatePosition();
+      });
       this.sceneDrag = mousePos;
     }
   }
 
-  onMouseUp($event) {
+  onSceneMouseUp($event) {
     if (this.wireInCreation) {
       this.removeWire(this.wireInCreation);
       this.wireInCreation = null;
@@ -157,13 +162,13 @@ export class SceneComponent implements OnInit, AfterViewInit {
     this.sceneDrag = null;
   }
 
-  onDragOver(e) {
+  onSceneDragOver(e) {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
     return false;
   }
 
-  onDrop(e) {
+  onSceneDrop(e) {
     var data = e.dataTransfer.getData("text");
     if (data) {
       var dto = JSON.parse(data);
@@ -198,7 +203,7 @@ export class SceneComponent implements OnInit, AfterViewInit {
 
   onDownloadPrototxt() {
     var text: string = "";
-    this.nodes.forEach((nc, i) => {
+    this.nodeComponents.forEach((nc, i) => {
       text += this.convertNodeToProtoText(nc, i);
     })
     let dialogRef = this.dialog.open(PrototxtViewComponent);

@@ -160,8 +160,14 @@ export class NodeComponent implements OnInit {
     this.outputTerminalMouseUp.emit(t);
   }
 
-  onNodeMouseDown(e : MouseEvent) {    
+  onNodeMouseUp(e : MouseEvent) {    
     this.isSelected = this.isSelected == true ? false : true;      
+    e.stopPropagation();
+    e.preventDefault();
+  }
+
+  onNodeMouseDown(e : MouseEvent) {    
+    e.stopPropagation();
   }
   
   onTitleMouseDown(e : MouseEvent) {    
