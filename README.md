@@ -26,9 +26,9 @@ This is a work in progress. Lots of features are still missing from the applicat
 - ~~Adding parameters widget to the application.~~
 - ~~Writing the added parameters to proto text file.~~
 - ~~About dialog box.~~
-- Panning for the scene.
+- ~~Panning for the scene.~~
+- **Reading .prototxt files and render the network.**
 - Using ProtobufJS.
-- Reading .prototxt files and render the network.
 - Adding Solver prototxt file.
 - Compiling the network in C++.
 - Verifying the correctness of the network layers and parameters.
